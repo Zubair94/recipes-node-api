@@ -67,6 +67,6 @@ export class App {
         this.app.use(error);
     }
     private routerConfig() {
-        this.app.use('/api/v1/ingredient', ingredientRoutes);
+        this.app.use('/api/v1/ingredients', ingredientRoutes);
     }
 }

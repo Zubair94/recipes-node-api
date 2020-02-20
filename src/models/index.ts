@@ -1,2 +1,2 @@
-export * from './ingredients.model';
-export * from './recipies.model';
+export * from './ingredient.model';
+export * from './recipe.model';
