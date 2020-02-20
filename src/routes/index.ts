@@ -1,1 +1,1 @@
-export * from "./public.route";
+export * from "./ingredient.route";

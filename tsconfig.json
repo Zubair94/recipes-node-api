@@ -13,7 +13,6 @@
         "src/**/*.ts"
     ],
     "typeRoots": [
-        "src/typings",
         "node_modules/@types"
     ],
     "types": ["node", "express", "morgan", "helmet", "mongoose"],

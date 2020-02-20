@@ -1,1 +1,1 @@
-export * from "./public.controller";
+export * from "./ingredient.controller";

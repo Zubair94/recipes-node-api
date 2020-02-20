@@ -2,10 +2,9 @@ import * as helmet from 'helmet';
 import * as httpLogger from 'morgan';
 import * as express from 'express';
 import { Request, Response, NextFunction, Application} from 'express';
-import { publicRoutes } from './routes';
+import { ingredientRoutes } from './routes';
 import { connection } from './config';
 import { error } from './middlewares';
-import { responseHandler } from './utils';
 export class App {
     app: Application;
     constructor() {
@@ -60,7 +59,7 @@ export class App {
                 }
                 next();
             } else {
-                responseHandler(res, 403, false, 'Bad access-control-allow-origin headers');
+                res.status(403).json({success: false, message: 'Bad access-control-allow-origin headers'});
             }
         });  
     }
@@ -68,6 +67,6 @@ export class App {
         this.app.use(error);
     }
     private routerConfig() {
-        this.app.use('/api/v1/public', publicRoutes);
+        this.app.use('/api/v1/ingredient', ingredientRoutes);
     }
 }
