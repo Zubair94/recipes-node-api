@@ -26,9 +26,9 @@ services:
     networks:
       - recipiesnetwork
     ports:
-      - '8080:8080'
+      - '3000:3000'
     volumes:
-      - '../api:/usr/src/app'
+      - './:/usr/src/app'
       - '/usr/src/app/node_modules'
     depends_on:
       - database
