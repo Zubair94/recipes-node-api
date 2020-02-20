@@ -1,0 +1,50 @@
+{
+  "name": "express-typescript-boilerplate",
+  "version": "1.0.0",
+  "description": "Express Typescript REST API Boilerplate",
+  "main": "server.js",
+  "scripts": {
+    "build": "tsc",
+    "compile": "rm -rf dist && mkdir dist && webpack --config webpack.server.config.js --progress --colors && cp package.json dist/package.json",
+    "dev": "ts-node --files src/server.ts",
+    "dev:nodemon": "nodemon --watch 'src/**/*.ts' --exec 'ts-node --files' src/server.ts",
+    "start:dev": "tsc && node dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Zubair94/recipies-node-api.git"
+  },
+  "keywords": [
+    "express",
+    "typescript",
+    "nodejs"
+  ],
+  "author": "Zubair",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Zubair94/recipies-node-api/issues"
+  },
+  "homepage": "https://github.com/Zubair94/recipies-node-api#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "mongoose": "^5.8.7",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "@types/helmet": "^0.0.45",
+    "@types/mongoose": "^5.5.41",
+    "@types/morgan": "^1.7.37",
+    "@types/node": "^13.1.2",
+    "dotenv-webpack": "^1.7.0",
+    "nodemon": "^2.0.2",
+    "ts-loader": "^6.2.1",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.4",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-node-externals": "^1.7.2"
+  }
+}

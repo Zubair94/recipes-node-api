@@ -1,0 +1,24 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "module": "commonjs",
+        "sourceMap": true,
+        "target": "es6",
+        "outDir": "dist",
+        "baseUrl": ".",
+        "moduleResolution": "node",
+        "pretty": true
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "typeRoots": [
+        "src/typings",
+        "node_modules/@types"
+    ],
+    "types": ["node", "express", "morgan", "helmet", "mongoose"],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}
