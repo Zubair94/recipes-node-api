@@ -1,5 +1,5 @@
-# Express Typescript REST API Boilerplate
-A REST API Boilerplate made with express, typescript with authentication by jwt.
+# RECIPIES Typescript REST API Boilerplate
+A REST API Boilerplate made with express, typescript.
 
 ## Development server
 
