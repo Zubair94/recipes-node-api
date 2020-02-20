@@ -6,3 +6,4 @@ dist/*
 .env
 .DS_Store
 src/.DS_Store
+backup/*

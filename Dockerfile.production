@@ -1,0 +1,13 @@
+FROM node:lts-alpine as build
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY package*.json /usr/src/app/
+RUN npm run compile
+
+FROM node:lts-alpine
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY --from=build /usr/src/app/dist/server.js /usr/src/app/server.js
+COPY --from=build /usr/src/app/dist/package.json /usr/src/app/package.json
+RUN npm install
+CMD [ "NODE_ENV=production", "node", "server.js" ]

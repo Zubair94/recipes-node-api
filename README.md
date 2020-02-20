@@ -1,5 +1,5 @@
-# RECIPIES Typescript REST API Boilerplate
-A REST API Boilerplate made with express, typescript.
+# Recipies Typescript REST API Boilerplate
+Simple API with Node.js , MongoDB, PostgreSQL
 
 ## Development server
 

@@ -45,7 +45,7 @@ export class App {
     }
     private cors() {
         this.app.use((req: Request, res: Response, next: NextFunction) => {
-            const allowedOrigins = ['http://localhost:4200', 'http://192.168.1.101:4200', '*'];
+            const allowedOrigins = ['http://localhost:4200', 'http://192.168.1.101:4200'];
             const origin = this.app.get('env') === 'production' ?  req.headers.origin : '*';
             if (origin && typeof origin === 'string') {
                 const remoteIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress;

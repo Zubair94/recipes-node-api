@@ -1,8 +1,8 @@
 {
-  "name": "express-typescript-boilerplate",
+  "name": "recipies-node-api",
   "version": "1.0.0",
-  "description": "Express Typescript REST API Boilerplate",
-  "main": "server.js",
+  "description": "Simple API with Node.js , MongoDB, PostgreSQL",
+  "main": "server.ts",
   "scripts": {
     "build": "tsc",
     "compile": "rm -rf dist && mkdir dist && webpack --config webpack.server.config.js --progress --colors && cp package.json dist/package.json",
