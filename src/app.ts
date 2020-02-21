@@ -2,7 +2,7 @@ import * as helmet from 'helmet';
 import * as httpLogger from 'morgan';
 import * as express from 'express';
 import { Request, Response, NextFunction, Application} from 'express';
-import { ingredientRoutes } from './routes';
+import { ingredientRoutes, recipeRoutes } from './routes';
 import { connection } from './config';
 import { error } from './middlewares';
 export class App {
@@ -68,5 +68,6 @@ export class App {
     }
     private routerConfig() {
         this.app.use('/api/v1/ingredients', ingredientRoutes);
+        this.app.use('/api/v1/recipes', recipeRoutes);
     }
 }

@@ -13,21 +13,25 @@ const RecipeSchema = new Schema({
     Ingredients: [{
         _id: {
             type: Schema.Types.ObjectId,
-            ref: 'Ingredient'
+            ref: 'Ingredient',
+            required: [true, 'Property _id missing from Recipe.Ingredients'],
         },
         usedQuantity: {
             type: Number,
-            min: 0
+            required: [true, 'Property _id missing from Recipe.usedQuantity'],
+            min: 1
         }
     }],
     Recipes: [{
         _id: {
             type: Schema.Types.ObjectId,
+            required: [true, 'Property _id missing from Recipe.Recipes'],
             ref: 'Recipe'
         },
         usedQuantity: {
             type: Number,
-            min: 0
+            required: [true, 'Property _id missing from Recipe.usedQuantity'],
+            min: 1
         }
     }],
     restockHistory: [{
@@ -49,7 +53,7 @@ export interface IRecipe extends Document {
         _id: string,
         usedQuantity: number
     }>,
-    Recipies: Array<{
+    Recipes: Array<{
         _id: string,
         usedQuantity: number
     }>,

@@ -1,6 +1,7 @@
 import { NextFunction, Response, Request } from 'express';
-import { Ingredient } from '../models';
+import { Ingredient, Recipe } from '../models';
 import { ErrorResponse } from '../utils';
+import { Types } from 'mongoose';
 
 export class IngredientController{
     static async fetchAllIngredient(req: Request, res: Response, next: NextFunction) {
@@ -39,6 +40,12 @@ export class IngredientController{
         }
     }
     static async removeIngredient(req: Request, res: Response, next: NextFunction) {
-        res.status(200).json({success: true, data: "Public Data Fetched", message: "Public Data fetched"});
+        const ingredientId = req.params.ingredientId;
+        const promise_array = [
+            Recipe.updateMany({}, {$pull: {Ingredients: {_id: ingredientId}}}),
+            Ingredient.findOneAndDelete({_id: ingredientId})
+        ];
+        const ingredient_removed = await Promise.all(promise_array);
+        res.status(200).json({success: true, data: ingredient_removed[1], message: 'Ingredient removed'});
     }
 }
