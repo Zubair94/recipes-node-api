@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+  database:
+    image: mongo:latest
+    container_name: recipies_db
+    env_file: .env
+    environment:
+      - db=${db}
+      - rootuser=${rootuser}
+      - rootpassword=${rootpassword}
+      - dbuser=${dbuser}
+      - dbpassword=${dbpassword}
+    volumes:
+      - './backup/mongobackups:/var/backups/mongobackups'
+      - './backup/db:/data/db'
+      - './mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh'
+    networks:
+      - recipiesnetwork
+    restart: unless-stopped
+  api:
+    image: registry.gitlab.com/zubair94/recipes-node-api:latest
+    container_name: recipies_api
+    networks:
+      - recipiesnetwork
+    depends_on:
+      - database
+    links:
+      - database
+    restart: unless-stopped
+networks:
+  recipiesnetwork:
+    name: recipiesnetwork
+    driver: bridge
