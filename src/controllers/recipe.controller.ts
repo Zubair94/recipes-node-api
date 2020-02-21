@@ -4,10 +4,12 @@ import { ErrorResponse } from '../utils';
 import { Types } from 'mongoose';
 
 export class RecipeController {
+    // Fetch All Recipe
     static async fetchAllRecipe(req: Request, res: Response, next: NextFunction) {
         const recipes = await Recipe.find({});
         res.status(200).json({success: true, data: recipes, message: 'Recipes fetched'});
     }
+    // Fetch Recipe
     static async fetchRecipe(req: Request, res: Response, next: NextFunction) {
         const recipeId = req.params.recipeId;
         const aggregatePipeline = [
@@ -62,14 +64,15 @@ export class RecipeController {
         recipe[recipe.length -1 ].Recipes = recipesInRecipe;
         delete recipe[recipe.length - 1].ingredients;
         delete recipe[recipe.length - 1].recipes;
-        console.log(recipe_cost, ingredient_cost);
         recipe[recipe.length -1 ].totalCost = ingredient_cost + recipe_cost;
         res.status(200).json({success: true, data: recipe, message: 'Recipe fetched.'});
     }
+    // Add a New Recipe with _id
     static async addRecipe(req: Request, res: Response, next: NextFunction) {
         const newRecipe = await Recipe.create(req.body);
         res.status(201).json({success: true, data: newRecipe, message: 'Added recipe.'});
     }
+    // Update a Recipe with _id
     static async updateRecipe(req: Request, res: Response, next: NextFunction) {
         const recipeId = req.params.recipeId;
         const updateArgs = {
@@ -89,6 +92,7 @@ export class RecipeController {
         const recipe = await Recipe.findOneAndUpdate({_id: recipeId}, updateArgs, {new: true, runValidators: true});
         res.status(200).json({success: true, data: recipe, message: 'Recipe updated.'});
     }
+    // Remove a recipe with _id
     static async removeRecipe(req: Request, res: Response, next: NextFunction) {
         const recipeId = req.params._id;
         const promise_array = [

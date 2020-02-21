@@ -1,5 +1,7 @@
 import { connect, Mongoose } from 'mongoose';
 import { DB_URI_MONGO } from './environment.config';
+
+// Database Connection
 export const connection = () => {
     connect(DB_URI_MONGO, {
         useFindAndModify: false,
